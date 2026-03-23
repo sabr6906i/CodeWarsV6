@@ -76,11 +76,10 @@ class Server:
             return
 
         self.setup_game()
+        self.player_lock = threading.Lock()
 
         thread = threading.Thread(target=self.add_players, daemon=True)
         thread.start()
-
-        self.player_lock = threading.Lock()
 
         self.run_game()
 
